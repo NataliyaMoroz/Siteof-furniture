@@ -27,4 +27,6 @@ public class User {
 	private String name;
 
 	private String region;
+
+	private String role;
 }
