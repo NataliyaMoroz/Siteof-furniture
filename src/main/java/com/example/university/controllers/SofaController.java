@@ -26,12 +26,12 @@ public class SofaController {
     }
 
     @GetMapping(value = "/get-brand")
-    public List<Sofa> getByBrand(@RequestBody String brand) {
+    public List<Sofa> getByBrand(@RequestParam(value = "brand") String brand) {
         return sofaRepository.findByBrand(brand);
     }
 
     @GetMapping(value = "/get-armrest")
-    public List<Sofa> getByArmrest(@RequestBody String armrest) {
+    public List<Sofa> getByArmrest(@RequestParam(value = "armrest") String armrest) {
         return sofaRepository.findByArmrest(armrest);
     }
 
