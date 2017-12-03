@@ -16,6 +16,6 @@ public class TestController {
 
 	@GetMapping(value = "/unauthenticated")
 	public ResponseEntity testUnauthenticated() {
-		return ResponseEntity.ok("OK");
+		return ResponseEntity.ok("{\"result\":\"OK\"}");
 	}
 }
