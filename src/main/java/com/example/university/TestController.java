@@ -6,11 +6,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/v1/test")
+@RequestMapping(value = "/be/test")
 public class TestController {
 
-	@GetMapping
-	public ResponseEntity test() {
+	@GetMapping(value = "/authenticated")
+	public ResponseEntity testAuthenticated() {
+		return ResponseEntity.ok("OK");
+	}
+
+	@GetMapping(value = "/unauthenticated")
+	public ResponseEntity testUnauthenticated() {
 		return ResponseEntity.ok("OK");
 	}
 }
