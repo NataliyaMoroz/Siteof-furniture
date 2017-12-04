@@ -8,3 +8,7 @@ create table bed (id INT NOT NULL AUTO_INCREMENT, price int not null, brand varc
 create table sofa (id INT NOT NULL AUTO_INCREMENT, price int not null, brand varchar(30) not null, armrest varchar(30), num_of_seats int not null,  PRIMARY KEY (id));
 
 show tables;
+
+# password - 1234
+insert INTO user(email, hash_password, name, region, role) VALUES ('admin@admin.com', '$2a$10$5RhehnDP.gL2W5sYP9vcdu8G0k63Lj9zWri6bBlrZHQ0hDZiiMsOS',	'Natasha',	'Poznan',	'admin');
+

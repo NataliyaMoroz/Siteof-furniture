@@ -4,6 +4,7 @@ import com.example.university.services.UserService;
 import com.example.university.utils.UserAlreadyExistException;
 import com.example.university.dao.User;
 import com.example.university.services.AuthenticationService;
+import com.example.university.utils.UserIsNotValidException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public class UserController {
 	}
 
 	@PostMapping(value = "/login")
-	public ResponseEntity loginUser(@RequestBody User user) {
+	public ResponseEntity loginUser(@RequestBody User user) throws UserIsNotValidException {
 		userService.loginUser(user);
 		return ResponseEntity.ok().build();
 	}

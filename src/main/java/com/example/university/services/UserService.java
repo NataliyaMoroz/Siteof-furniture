@@ -3,6 +3,7 @@ package com.example.university.services;
 import com.example.university.dao.User;
 import com.example.university.repositories.UserRepository;
 import com.example.university.utils.UserAlreadyExistException;
+import com.example.university.utils.UserIsNotValidException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,8 +22,13 @@ public class UserService {
 	private
 	BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	public void loginUser(User user) {
+	public void loginUser(User user) throws UserIsNotValidException {
+		if (notValidUser(user)) throw new UserIsNotValidException();
 		securityService.autologin(user.getEmail(), user.getHashPassword());
+	}
+
+	private boolean notValidUser(User user) {
+		return user.getEmail() == null || user.getHashPassword() == null;
 	}
 
 	public void saveNewUser(User user) throws UserAlreadyExistException {
