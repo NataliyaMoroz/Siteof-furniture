@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Наталия on 03.12.2017.
  */
-public interface BedRepository extends CrudRepository<User, Long> {
+public interface BedRepository extends CrudRepository<Bed, Long> {
 
     List<Bed> findBySize(String size);
 

@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Наталия on 03.12.2017.
  */
 
-public interface MattressRepository extends CrudRepository<Sofa, Integer> {
+public interface MattressRepository extends CrudRepository<Mattress, Integer> {
 
     List<Mattress> findByMaxWeight(int weight);
 }
