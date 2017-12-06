@@ -15,17 +15,19 @@
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-<header>
-<img class="photo" src="images/logo.png"/>
-    <nav >
-        <ul>
-            <a href=""><li><b>Home</b></li></a>
-            <a href=""><li><b>About</b></li></a>
-            <a href=""><li><b>Contact</b></li></a>
-        </ul>
-    </nav>
-</header>
-<div class="container" ng-controller="MainController"></div>
+<div class="container" ng-controller="MainController">
+    <header>
+    <img class="photo" src="images/logo.png"/>
+        <nav >
+            <ul>
+                <li><a href="/#!/home"><b>Home</b></a></li>
+                <li><a href=""><b>About</b></a></li>
+                <li ng-if="showUser"><a  href=""><b>{{user.name}}</b></a></li>
+                <li ng-if="!showUser" ><a  href="/#!/login"><b>Login</b></a></li>
+            </ul>
+        </nav>
+    </header>
+</div>
 <ng-view></ng-view>
 <script src="/webjars/angularjs/1.6.6/angular.js"></script>
 <script src="/webjars/angularjs/1.6.6/angular-resource.js"></script>
