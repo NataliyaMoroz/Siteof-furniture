@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100,700,500);
 
+.fixed
+{
+    width: 1200px;
+}
 body {
     padding-top: 0px;
     background:#F7F7F7;
@@ -418,9 +422,9 @@ nav > li > a:focus {
     transform: scaleY(1);
 }
 
-.buttonI {
+.button {
     display: inline-block;
-    width: 100%;
+    width: 20%;
     background: #943cbc;
     color: #fff;
     font-family: "Roboto", sans-serif;
@@ -433,4 +437,14 @@ nav > li > a:focus {
     box-shadow: 1px 1px 10px rgba(0, 0, 0, .4);
     cursor: pointer;
     text-decoration: none;
+}
+.button:hover,
+.button:focus {
+    color: #fff;
+    background-color: #2D3B55;
+}
+
+.informational_panel {
+    float:left;
+    width: 45%;
 }

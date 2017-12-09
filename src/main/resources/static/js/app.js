@@ -21,9 +21,13 @@ app.config(function($routeProvider){
             templateUrl: '../views/home.html'
             //controller: 'homeController'
         })
+        .when('/home/sofa/detailed', {
+            templateUrl: '../views/sofaDetailed.html',
+            controller: 'sofaController'
+        })
         .otherwise(
             {
-                redirectTo: '/'
+                redirectTo: '/home'
             }
         );
 }).controller("MainController", ['$scope','$http', '$window', function($scope, $http, $window){
