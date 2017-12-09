@@ -2,11 +2,10 @@ package com.example.university.controllers;
 
 import com.example.university.dao.Sofa;
 import com.example.university.repositories.SofaRepository;
+import com.example.university.services.SofaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * Created by Наталия on 03.12.2017.
@@ -17,6 +16,8 @@ public class SofaController {
 
     @Autowired
     SofaRepository sofaRepository;
+    @Autowired
+    SofaService sofaService;
 
     @PostMapping(value = "/save")
     public ResponseEntity save(@RequestBody Sofa sofa) {
@@ -24,20 +25,23 @@ public class SofaController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping(value = "/get-brand")
-    public List<Sofa> getByBrand(@RequestParam(value = "brand") String brand) {
-        return sofaRepository.findByBrand(brand);
-    }
-
-    @GetMapping(value = "/get-armrest")
-    public List<Sofa> getByArmrest(@RequestParam(value = "armrest") String armrest) {
-        return sofaRepository.findByArmrest(armrest);
-    }
-
     @GetMapping(value = "/all")
-	public Iterable<Sofa> getAll() {
-    	return sofaRepository.findAll();
-	}
+    public Iterable<Sofa> getByBrandAndArmrest(@RequestParam(value = "priceFrom", required = false) Integer price1,
+                                               @RequestParam(value = "priceTo", required = false) Integer price2,
+                                               @RequestParam(value = "brand", required = false) String brand,
+                                           @RequestParam(value = "armrest", required = false) String armrest) {
+        if (price1 == null && price2 != null) {
+            return sofaService.findAllByPriceLessThanEqualBrandAndArmrest(price2, brand, armrest);
+        }
+        else if (price1 != null && price2 == null) {
+            return sofaService.findAllByPriceMoreThanEqualBrandAndArmrest(price1, brand, armrest);
+        }
+        else if (price1 == null && price2 == null) {
+            return sofaService.findAllByPriceAndBrandAndArmrest(brand, armrest);
+        }
+        return sofaService.findAllByPriceBetweenAndBrandAndArmrest(price1, price2, brand, armrest);
+    }
+
 
     @DeleteMapping(value = "/delete")
     public ResponseEntity deleteSofa(@RequestBody int id) {
