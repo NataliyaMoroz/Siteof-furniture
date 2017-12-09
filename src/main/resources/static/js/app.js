@@ -18,8 +18,8 @@ app.config(function($routeProvider){
             controller: 'mattressController'
         })
         .when('/home', {
-            templateUrl: '../views/home.html',
-            controller: 'homeController'
+            templateUrl: '../views/home.html'
+            //controller: 'homeController'
         })
         .otherwise(
             {

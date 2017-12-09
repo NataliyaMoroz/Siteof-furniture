@@ -7,4 +7,41 @@
                 <li><a href="#">Sofa</a></li>
             </ul>
     </div>
+
+    <ul class="products clearfix">
+        <li ng-repeat="sofa in sofas" class="product-wrapper">
+            <a href="" class="product">
+                <div class="product-main">
+                    <div class="product-photo">
+                        <img src="../images/sofa.jpg" alt="">
+                    </div>
+                    <div class="product-text">
+                        <h2 class = "produvt-name">{{sofa.brand}}</h2>
+                        <p>
+                            Armrest: {{sofa.armrest}}<br/>
+                            Number of seats: {{sofa.numOfSeats}}
+                        </p>
+                    </div>
+                </div>
+                <div class="product-details-wrap">
+                    <div class="product-details">
+                        <span class="product-price">
+                            <b>{{sofa.price}} $</b>
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </a>
+            <div class="product-buttons-wrap">
+                <div class="buttons">
+                    <p >
+                        <span class="buttonI">FUCK</span>
+                    </p>
+
+                </div>
+            </div>
+        </li>
+    </ul>
 </div>

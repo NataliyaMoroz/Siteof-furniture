@@ -1,7 +1,6 @@
 package com.example.university.controllers;
 
 import com.example.university.dao.Sofa;
-import com.example.university.dao.User;
 import com.example.university.repositories.SofaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +33,11 @@ public class SofaController {
     public List<Sofa> getByArmrest(@RequestParam(value = "armrest") String armrest) {
         return sofaRepository.findByArmrest(armrest);
     }
+
+    @GetMapping(value = "/all")
+	public Iterable<Sofa> getAll() {
+    	return sofaRepository.findAll();
+	}
 
     @DeleteMapping(value = "/delete")
     public ResponseEntity deleteSofa(@RequestBody int id) {
