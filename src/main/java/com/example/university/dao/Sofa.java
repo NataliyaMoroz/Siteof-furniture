@@ -24,5 +24,6 @@ public class Sofa {
     private String brand;
     private String armrest;
     private int numOfSeats;
+    private String description;
 
 }
