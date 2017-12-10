@@ -23,7 +23,7 @@ app.config(function($routeProvider){
         })
         .when('/home/sofa/detailed', {
             templateUrl: '../views/sofaDetailed.html',
-            controller: 'sofaController'
+            controller: 'sofaDetailedController'
         })
         .otherwise(
             {

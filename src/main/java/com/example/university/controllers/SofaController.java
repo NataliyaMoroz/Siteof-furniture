@@ -52,6 +52,12 @@ public class SofaController {
         return sofaService.findAllByPriceBetweenAndBrandAndArmrest(price1, price2, brand, armrest);
     }
 
+    @GetMapping(value = "/{id}")
+	public ResponseEntity<Sofa> getDetailedSofaInfo(@PathVariable Integer id) {
+		Sofa sofa = sofaRepository.findOne(id);
+		return ResponseEntity.ok(sofa);
+	}
+
     @GetMapping(value = "/feedback/{id}")
 	public List<SofaFeedback> sofaFeedbacks(@PathVariable Integer id) {
     	return sofaFeedbackRepository.findBySofaId(id);
