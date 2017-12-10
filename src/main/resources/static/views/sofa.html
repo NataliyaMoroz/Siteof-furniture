@@ -10,7 +10,7 @@
 
     <ul class="products clearfix">
         <li ng-repeat="sofa in sofas" class="product-wrapper">
-            <a href="/#!/home/sofa/detailed" class="product">
+            <a href="/#!/home/sofa/detailed" ng-click="saveSofaId(sofa.id)" class="product">
                 <div class="product-main">
                     <div class="product-photo">
                         <img src="../images/sofa.jpg" alt="">
