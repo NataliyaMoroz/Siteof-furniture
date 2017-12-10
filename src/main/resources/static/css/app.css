@@ -445,6 +445,7 @@ nav > li > a:focus {
 }
 
 .informational_panel {
+    margin: 1% 1% 1% 1%;
     float:left;
     width: 45%;
 }
