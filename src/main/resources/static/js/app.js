@@ -21,7 +21,7 @@ app.config(function($routeProvider){
             templateUrl: '../views/home.html'
             //controller: 'homeController'
         })
-        .when('/home/sofa/detailed', {
+        .when('/home/sofa/detailed/:id', {
             templateUrl: '../views/sofaDetailed.html',
             controller: 'sofaDetailedController'
         })
