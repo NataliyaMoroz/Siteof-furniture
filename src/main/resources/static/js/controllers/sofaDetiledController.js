@@ -14,9 +14,21 @@ app.controller('sofaDetailedController', ["$http", "$scope", "$window", "$locati
 
         $scope.buy = function () {
             return $http.post("be/user/buy", {idFurniture:$scope.sofa.id, category:'sofa'}).then(function () {
-
-                alert("OK");
+                alert("You did it!");
             });
-        }
+        };
+
+        $scope.submitFeedback = function () {
+            $http.post("be/sofa/feedback/insert", {sofaId:$scope.sofaId, description:$scope.feedbackText}).then(function () {
+                alert("Review submitted!");
+            });
+        };
+
+        $scope.feedbacks = [];
+
+        $http.get("be/sofa/feedback/" + $scope.sofaId).then(function (response) {
+            $scope.feedbacks = response.data;
+        })
+
     }
 ]);

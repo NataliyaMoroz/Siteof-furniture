@@ -14,12 +14,37 @@
         <p align="center">
             <a ng-if="userAuthentificated" ng-click="buy()" class="button">Buy</a>
         </p>
+        <div class="container" >
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>Comments</h3>
+                </div>
+            </div>
+            <div class="row" ng-repeat="feedback in feedbacks">
+                <div class="col-sm-1">
+                    <div class="thumbnail">
+                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                    </div>
+                </div>
+
+                <div class="col-sm-5">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            {{feedback.description}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
     <div class="clear">
         <form action="" method="post">
             <p><b>Feedback:</b></p>
-            <p><textarea rows="10" cols="100" name="text"></textarea></p>
-            <p><a ng-if="" ng-click="" class="button">Send comment</a></p>
+            <p><textarea  ng-model="feedbackText" rows="10" cols="100" name="text"></textarea></p>
+            <p align="center">
+                <a ng-if="userAuthentificated" ng-click="submitFeedback()" class="button">Comment</a>
+            </p>
         </form>
     </div>
 </div>

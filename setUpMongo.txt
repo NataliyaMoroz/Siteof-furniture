@@ -1,1 +1,3 @@
 use shop;
+db.sofaFeedback.insert({"sofaId":2, "description":"cool"})
+https://docs.mongodb.com/v3.4/reference/mongo-shell/
