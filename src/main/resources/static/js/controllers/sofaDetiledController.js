@@ -5,5 +5,18 @@ app.controller('sofaDetailedController', ["$http", "$scope", "$window", "$locati
         $http.get($scope.path).then(function (response) {
             $scope.sofa =  response.data;
         });
+
+        $scope.userAuthentificated = false;
+
+        $http.get("be/user/currentUser").then(function (response) {
+            $scope.userAuthentificated = true;
+        }).catch(function (response) {});
+
+        $scope.buy = function () {
+            return $http.post("be/user/buy", {idFurniture:$scope.sofa.id, category:'sofa'}).then(function () {
+
+                alert("OK");
+            });
+        }
     }
 ]);

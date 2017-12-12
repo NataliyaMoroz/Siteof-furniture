@@ -1,9 +1,9 @@
 package com.example.university.controllers;
 
+import com.example.university.dao.Booking;
 import com.example.university.services.UserService;
 import com.example.university.utils.UserAlreadyExistException;
 import com.example.university.dao.User;
-import com.example.university.services.AuthenticationService;
 import com.example.university.utils.UserIsNotValidException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,5 +31,11 @@ public class UserController {
 	@GetMapping(value = "/currentUser")
 	public ResponseEntity<User> getCurrentUser() {
 		return ResponseEntity.ok(userService.getCurrentUser());
+	}
+
+	@PostMapping(value = "/buy")
+	public ResponseEntity buy(@RequestBody Booking purchase) {
+		userService.submitNewPurchase(purchase);
+		return ResponseEntity.ok().build();
 	}
 }

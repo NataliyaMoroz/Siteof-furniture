@@ -1,6 +1,8 @@
 package com.example.university.services;
 
+import com.example.university.dao.Booking;
 import com.example.university.dao.User;
+import com.example.university.repositories.BookingRepository;
 import com.example.university.repositories.UserRepository;
 import com.example.university.utils.UserAlreadyExistException;
 import com.example.university.utils.UserIsNotValidException;
@@ -15,12 +17,13 @@ public class UserService {
 	private SecurityService securityService;
 
 	@Autowired
-	private
-	UserRepository userRepository;
+	private UserRepository userRepository;
 
 	@Autowired
-	private
-	BCryptPasswordEncoder bCryptPasswordEncoder;
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+	@Autowired
+	private BookingRepository bookingRepository;
 
 	public void loginUser(User user) throws UserIsNotValidException {
 		if (notValidUser(user)) throw new UserIsNotValidException();
@@ -41,5 +44,11 @@ public class UserService {
 
 	public User getCurrentUser() {
 		return securityService.findLoggedInUsername().withHashPassword("");
+	}
+
+	public void submitNewPurchase(Booking purchase) {
+		Long userId = getCurrentUser().getId(); // if somehow this statement access without user in session then exception will be thrown
+		purchase = purchase.withIdUser(userId);
+		bookingRepository.save(purchase);
 	}
 }

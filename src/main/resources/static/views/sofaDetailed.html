@@ -12,7 +12,7 @@
             Description: {{sofa.description}}
         </p>
         <p align="center">
-            <a class="button" ng-cl>Buy</a>
+            <a ng-if="userAuthentificated" ng-click="buy()" class="button">Buy</a>
         </p>
     </div>
 </div>

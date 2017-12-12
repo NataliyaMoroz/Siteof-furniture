@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Wither;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -19,7 +21,8 @@ import javax.persistence.Id;
 public class Mattress {
 
     @Id
-    private int id;
+	@GeneratedValue(strategy= GenerationType.AUTO)
+	private int id;
     private int price;
     private String brand;
     private String kind;

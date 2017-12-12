@@ -9,21 +9,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
-/**
- * Created by Наталия on 03.12.2017.
- */
 @Entity
 @Data
-@Wither
 @NoArgsConstructor
-@AllArgsConstructor
-public class Bed {
-    @Id
+@AllArgsConstructor@Wither
+public class Booking {
+	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
-	private int id;
-    private int price;
-    private String brand;
-    private String woodVariety;
-    private String size;
+	Integer id;
+
+	Long idUser;
+
+	@NotNull
+	Integer idFurniture;
+
+	@NotNull
+	String category;
 }
