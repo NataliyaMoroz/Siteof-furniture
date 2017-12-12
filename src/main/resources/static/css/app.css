@@ -449,3 +449,7 @@ nav > li > a:focus {
     float:left;
     width: 45%;
 }
+
+.clear {
+    clear:both;
+}
