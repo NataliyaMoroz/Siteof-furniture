@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.css">
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
@@ -22,8 +23,16 @@
             <ul>
                 <li><a href="/#!/home"><b>Home</b></a></li>
                 <li><a href=""><b>About</b></a></li>
-                <li ng-if="showUser"><a  href=""><b>{{user.name}}</b></a></li>
+                <li ng-if="showUser">
+                    <div class="dropdown">
+                        <button class="dropbtn"> <b>{{user.name}}</b> </button>
+                        <div class="dropdown-content">
+                            <a ng-click="logOut()"> LogOut </a>
+                        </div>
+                    </div>
+                </li>
                 <li ng-if="!showUser" ><a  href="/#!/login"><b>Login</b></a></li>
+                <li ng-if="!showUser" ><a  href="/#!/signup"><b>SignUp</b></a></li>
             </ul>
         </nav>
     </header>

@@ -5,6 +5,10 @@ app.config(function($routeProvider){
             templateUrl: '../views/login.html',
             controller: 'loginController'
         })
+        .when('/signup', {
+            templateUrl: '../views/signup.html',
+            controller: 'loginController'
+        })
         .when('/home/bed', {
             templateUrl: '../views/bed.html',
             controller: 'bedController'
@@ -37,5 +41,10 @@ app.config(function($routeProvider){
     $http.get("be/user/currentUser").then(function (response) {
         $scope.user = response.data;
         $scope.showUser = true;
-    }).catch(function (response) {})
+    }).catch(function (response) {});
+
+    $scope.logOut= function () {
+        $http.get("be/logout");
+        window.location.reload();
+    }
 }]);
