@@ -6,4 +6,25 @@
                 <li><a href="#">Sofa</a></li>
             </ul>
     </div>
+    <div class="filters">
+        <form action="" method="post">
+            <fieldset id="price">
+                <p><b>Price</b></p>
+                <p>Minimum: <textarea  ng-model="" rows="1" cols="10" name="minPrice"></textarea></p>
+                <p>Maximum: <textarea  ng-model="" rows="1" cols="10" name="maxPrice"></textarea></p>
+            </fieldset>
+            <fieldset id="weight">
+                <p><b>Bed load</b></p>
+                <p><input type="range" min="20" max="500" id="size" oninput="" value="75"></p>
+            </fieldset>
+            <fieldset id="type">
+                <p><b>Type</b></p>
+                <p><input name="brand" type="checkbox" value="spring-loaded"> Spring-loaded</p>
+                <p><input name="brand" type="checkbox" value="springless"> Springless</p>
+                <p><input name="brand" type="checkbox" value="child"> Children's</p>
+                <p><input name="brand" type="checkbox" value="wireframe"> Wireframe</p>
+                <p><input name="brand" type="checkbox" value="thin"> Thin</p>
+            </fieldset>
+        </form>
+    </div>
 </div>
