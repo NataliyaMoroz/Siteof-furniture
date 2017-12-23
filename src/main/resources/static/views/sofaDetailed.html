@@ -38,12 +38,43 @@
 
         </div>
     </div>
-    <div class="clear">
+    <div class="clear"> </div>
+    <div class="feedback">
         <form action="" method="post">
             <p><b>Feedback:</b></p>
             <p><textarea  ng-model="feedbackText" rows="10" cols="100" name="text"></textarea></p>
             <p align="center">
                 <a ng-click="submitFeedback()" class="button">Comment</a>
+            </p>
+        </form>
+    </div>
+    <div class="quality">
+        <form action="оработчик" method="post">
+            <h3><b>Estimate product:</b></h3>
+            <fieldset id="question1">
+                <p><b>General product quality:</b></p>
+                <p><input name="question1" type="radio" value="positive" checked> Perfect</p>
+                <p><input name="question1" type="radio" value="neutral"> Good</p>
+                <p><input name="question1" type="radio" value="negative"> Bad</p>
+            </fieldset>
+            <fieldset id="question2">
+                <p><b>Expected and real quality:</b></p>
+                <p><input name="question2" type="radio" value="positive" checked> Real quality better</p>
+                <p><input name="question2" type="radio" value="neutral"> Quality the same</p>
+                <p><input name="question2" type="radio" value="negative"> Real quality worse</p>
+            </fieldset>
+            <fieldset id="question3">
+                <p><b>Would you recommend this product?</b></p>
+                <p><input name="question3" type="radio" value="positive" checked> Yes</p>
+                <p><input name="question3" type="radio" value="negative"> No</p>
+            </fieldset>
+            <fieldset id="question4">
+                <p><b>Delivery speed:</b></p>
+                <p><input name="question4" type="radio" value="positive" checked> Delivered on deadline</p>
+                <p><input name="question4" type="radio" value="negative"> Delivered after deadline</p>
+            </fieldset>
+            <p align="center">
+                <a ng-click="submitFeedback()" class="button">Estimate</a>
             </p>
         </form>
     </div>
