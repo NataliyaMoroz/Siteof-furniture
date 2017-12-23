@@ -320,9 +320,19 @@ nav > li > a:focus {
 }
 
 .products {
+    float: left;
+    width: 75%;
     list-style: none;
     margin: 0 -20px 0 0;
     padding: 0;
+}
+
+.filters {
+    float: right;
+    width: 18%;
+    background: #22D686;
+    border-left: 2px solid #000000; /* Параметры линии */
+    padding-left: 10px; /* Расстояние от линии до текста */
 }
 
 .product-photo {
