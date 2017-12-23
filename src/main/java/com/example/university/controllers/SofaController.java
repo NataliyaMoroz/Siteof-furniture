@@ -74,15 +74,6 @@ public class SofaController {
 		return ResponseEntity.ok().build();
 	}
 
-	@GetMapping(value = "/rate/{id}")
-	public double getAverageRate(@PathVariable Integer id) {
-		List<SofaCustomerRate> rates = sofaCustomerRateRepository.findBySofaId(id);
-		return rates.stream()
-				.mapToInt(SofaCustomerRate::getRate)
-				.average()
-				.orElse(-1);
-	}
-
 	@PostMapping(value = "/rate/submit")
 	public ResponseEntity submitRate(@Valid @RequestBody SofaCustomerRate sofaCustomerRate){
     	sofaCustomerRateRepository.insert(sofaCustomerRate);

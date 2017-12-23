@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -30,10 +32,6 @@ public class UserService {
 		securityService.autologin(user.getEmail(), user.getHashPassword());
 	}
 
-	private boolean notValidUser(User user) {
-		return user.getEmail() == null || user.getHashPassword() == null;
-	}
-
 	public void saveNewUser(User user) throws UserAlreadyExistException {
 		if (userRepository.findByEmail(user.getEmail()) != null) {
 			throw new UserAlreadyExistException();
@@ -50,5 +48,16 @@ public class UserService {
 		Long userId = getCurrentUser().getId(); // if somehow this statement access without user in session then exception will be thrown
 		purchase = purchase.withIdUser(userId);
 		bookingRepository.save(purchase);
+	}
+
+	public boolean userHasAccessToReviewThisItem(String category, Integer furnitureId){
+		Long userId = getCurrentUser().getId();
+		List<Booking> bookingList = bookingRepository.findByCategoryAndAndIdFurnitureAndIdUser(category, furnitureId, userId);
+		return !bookingList.isEmpty();
+	}
+
+
+	private boolean notValidUser(User user) {
+		return user.getEmail() == null || user.getHashPassword() == null;
 	}
 }

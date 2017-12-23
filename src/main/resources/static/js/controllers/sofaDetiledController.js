@@ -7,9 +7,16 @@ app.controller('sofaDetailedController', ["$http", "$scope", "$window", "$locati
         });
 
         $scope.userAuthentificated = false;
+        $scope.userAlreadyBoughtThisItem = false;
+
+
 
         $http.get("be/user/currentUser").then(function (response) {
             $scope.userAuthentificated = true;
+            $http.get("be/user/review/sofa/"+$scope.sofaId).then(function (response) {
+                $scope.userAlreadyBoughtThisItem = response.data;
+                console.log($scope.userAlreadyBoughtThisItem);
+            })
         }).catch(function (response) {});
 
         $scope.buy = function () {
@@ -22,6 +29,24 @@ app.controller('sofaDetailedController', ["$http", "$scope", "$window", "$locati
             $http.post("be/sofa/feedback/insert", {sofaId:$scope.sofaId, description:$scope.feedbackText}).then(function () {
                 alert("Review submitted!");
             });
+        };
+
+        $scope.submitRates = function () {
+          console.log($scope.generalProductQuality);
+          console.log($scope.expectedAndRealQuality);
+          console.log($scope.recommendThisProduct);
+          console.log($scope.deliverySpeed);
+          $http.post("be/sofa/rate/submit",
+              {
+                  sofaId:$scope.sofaId,
+                  generalProductQuality:$scope.generalProductQuality,
+                  expectedAndRealQuality:$scope.expectedAndRealQuality,
+                  recommendThisProduct:$scope.recommendThisProduct,
+                  deliverySpeed:$scope.deliverySpeed
+
+              }).then(function () {
+              alert("Rate submitted!");
+          })
         };
 
         $scope.feedbacks = [];

@@ -38,4 +38,9 @@ public class UserController {
 		userService.submitNewPurchase(purchase);
 		return ResponseEntity.ok().build();
 	}
+
+	@GetMapping(value="/review/{category}/{furnitureId}")
+	public ResponseEntity userHasAccessToReviewThisItem(@PathVariable String category, @PathVariable Integer furnitureId) {
+		return ResponseEntity.ok(userService.userHasAccessToReviewThisItem(category, furnitureId));
+	}
 }
