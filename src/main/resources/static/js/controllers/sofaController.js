@@ -6,6 +6,21 @@ app.controller('sofaController', ["$http", "$scope", "$window",
                 $scope.sofas =  response.data;
             });
         $scope.sofas = [];
+        $http.get("be/user/currentUser").then(function (response) {
+            $scope.userAuthentificated = true;
+            $http.get("be/user/userSettings").then(function (response) {
+                if(response!==null) {
+                    if (response.data.currentPage !== "/home/sofa") {
+                        $window.location.href = response.data.currentPage;
+                    }
+                    $scope.armrestOptions = response.data.armrest;
+                    $scope.siteFilter()
+                }
+
+            });
+
+        }).catch(function (response) {});
+
 
 
         $("input[type='checkbox']").click(function(){
@@ -18,6 +33,7 @@ app.controller('sofaController', ["$http", "$scope", "$window",
 
         $scope.siteFilter = function () {
 
+            $scope.saveUserSettings();
             console.log($scope.priceFrom);
             console.log($scope.priceTo);
             console.log($scope.armrestOptions);
@@ -125,4 +141,24 @@ app.controller('sofaController', ["$http", "$scope", "$window",
                     $scope.sofas =  response.data;
                 });
         };
+
+
+        $scope.loadUserSettings = function () {
+            $http.get("be/user/currentUser").then(function (response) {
+                $scope.userAuthentificated = true;
+                $http.get("be/user/userSettings").then(function (response) {
+                    if(response!==null)
+                        $scope.armrestOptions = response.data.armrest;
+                })
+            }).catch(function (response) {});
+        };
+
+        $scope.saveUserSettings = function () {
+            $http.get("be/user/currentUser").then(function (response) {
+                $scope.userAuthentificated = true;
+                $http.post("be/user/userSettings",
+                    {armrest:$scope.armrestOptions, furnitureCategory:"sofa", currentPage:"/home/sofa"})
+
+            }).catch(function (response) {});
+        }
     }]);
