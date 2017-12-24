@@ -28,8 +28,8 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-mongodb')
     compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-web')
-    compile (group: 'org.springframework.boot', name: 'spring-boot-starter-redis', version: '1.4.7.RELEASE')
-    compile (group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.0.0.M7')
+    //compile (group: 'org.springframework.boot', name: 'spring-boot-starter-redis', version: '1.4.7.RELEASE')
+    //compile (group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.0.0.M7')
     compile group: 'org.webjars', name: 'bootstrap', version: '3.3.7'
     compile group: 'org.webjars', name: 'angularjs', version: '1.6.6'
     runtime('mysql:mysql-connector-java')

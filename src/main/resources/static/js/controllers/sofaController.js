@@ -23,14 +23,6 @@ app.controller('sofaController', ["$http", "$scope", "$window",
 
 
 
-        $("input[type='checkbox']").click(function(){
-            $scope.siteFilter();
-        });
-
-        $("input[type='text']").click(function(){
-            $scope.siteFilter();
-        });
-
         $scope.siteFilter = function () {
 
             $scope.saveUserSettings();
@@ -95,8 +87,10 @@ app.controller('sofaController', ["$http", "$scope", "$window",
                     brandPath = "brand=" + $scope.brandSofyno;
                 }
             }
-            if($scope.armrestOptions != undefined || $scope.armrestOptions != all) {
-                armrestPath = "armrest=" + $scope.armrestOptions;
+            if($scope.armrestOptions != undefined) {
+                if($scope.armrestOptions.toString() != "all") {
+                    armrestPath = "armrest=" + $scope.armrestOptions;
+                }
             }
 
             if (priceFromPath != "") {

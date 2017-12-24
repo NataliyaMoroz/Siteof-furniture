@@ -37,13 +37,13 @@
         <form action="" method="get">
             <fieldset id="price">
                 <p><b>Price</b></p>
-                <label><p>Minimum: <input type="text" ng-model="priceFrom" name="priceFrom"></p></label>
-                <label><p>Maximum: <input type="text" ng-model="priceTo" name="priceTo"></p></label>
+                <label><p>Minimum: <input type="text" ng-model="priceFrom" ng-change="siteFilter()" name="priceFrom"></p></label>
+                <label><p>Maximum: <input type="text" ng-model="priceTo" ng-change="siteFilter()" name="priceTo"></p></label>
             </fieldset>
             <fieldset id="armrest">
                 <p><b>Choose armrest type:</b></p>
                 <select name="armrestOptions" ng-model="armrestOptions" ng-change="siteFilter()">
-                    <option ng-model="armrest" value="all" id="all">All types</option>
+                    <option ng-model="armrest" value="all" id="all" selected>All types</option>
                     <option ng-model="armrest" value="soft" id="soft">Soft armrests</option>
                     <option ng-model="armrest" value="wood" id="wood">Wood armrests</option>
                     <option ng-model="armrest" value="without" id="without">Without armrests</option>
@@ -51,15 +51,15 @@
             </fieldset>
             <fieldset id="brand">
                 <p><b>Brand</b></p>
-                <p><input ng-model="brandIKEA" name="brandIKEA" type="checkbox" value="IKEA"> IKEA</p>
+                <p><input ng-change="siteFilter()" ng-model="brandIKEA" name="brandIKEA" type="checkbox" value="IKEA"> IKEA</p>
                 <br/>
-                <p><input ng-model="brandSkySoft" name="brandSkySoft" type="checkbox" value="SkySsoft"> SkySoft</p>
+                <p><input ng-change="siteFilter()" ng-model="brandSkySoft" name="brandSkySoft" type="checkbox" value="SkySsoft"> SkySoft</p>
                 <br/>
-                <p><input ng-model="brandLaretto" name="brandLaretto" type="checkbox" value="Laretto"> Laretto</p>
+                <p><input ng-change="siteFilter()" ng-model="brandLaretto" name="brandLaretto" type="checkbox" value="Laretto"> Laretto</p>
                 <br/>
-                <p><input ng-model="brandDivanPlus" name="brandDivanPlus" type="checkbox" value="DivanPlus"> DivanPlus</p>
+                <p><input ng-change="siteFilter()" ng-model="brandDivanPlus" name="brandDivanPlus" type="checkbox" value="DivanPlus"> DivanPlus</p>
                 <br/>
-                <p><input ng-model="brandSofyno" name="brandSofyno" type="checkbox" value="Sofyno"> Sofyno</p>
+                <p><input ng-change="siteFilter()" ng-model="brandSofyno" name="brandSofyno" type="checkbox" value="Sofyno"> Sofyno</p>
             </fieldset>
         </form>
     </div>
