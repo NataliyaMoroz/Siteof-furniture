@@ -7,17 +7,7 @@ app.controller('sofaController', ["$http", "$scope", "$window",
             });
         $scope.sofas = [];
 
-        $("input[type='radio']").click(function(){
-            filterss();
-        });
-
-        $("input[type='text']").click(function(){
-            filterss();
-        });
-
-
-
-        $scope.filterss = function ($http, $scope, $window) {
+        $scope.siteFilter = function ($http, $scope, $window) {
             console.log($scope.priceFrom);
             console.log($scope.priceTo);
             console.log($scope.armrest);
@@ -35,4 +25,12 @@ app.controller('sofaController', ["$http", "$scope", "$window",
                     $scope.sofas =  response.data;
                 });
         }
+
+        $("input[type='checkbox']").click(function(){
+            siteFilter();
+        });
+
+        $("input[type='text']").click(function(){
+            siteFilter();
+        });
     }]);

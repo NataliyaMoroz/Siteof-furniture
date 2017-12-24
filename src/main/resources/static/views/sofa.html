@@ -42,11 +42,11 @@
             </fieldset>
             <fieldset id="armrest">
                 <p><b>Choose armrest type:</b></p>
-                <select name="armrest">
-                    <option (click)="filterss()" ng-model="armrest" value="all">All types</option>
-                    <option (click)="filterss()" ng-model="armrest" value="soft">Soft armrests</option>
-                    <option (click)="filterss()" ng-model="armrest" value="wood">Wood armrests</option>
-                    <option (click)="filterss()" ng-model="armrest" value="without">Without armrests</option>
+                <select name="armrest" onchange="siteFilter(this.value)">
+                    <option ng-model="armrest" value="all">All types</option>
+                    <option ng-model="armrest" value="soft">Soft armrests</option>
+                    <option ng-model="armrest" value="wood">Wood armrests</option>
+                    <option ng-model="armrest" value="without">Without armrests</option>
                 </select>
             </fieldset>
             <fieldset id="brand">
