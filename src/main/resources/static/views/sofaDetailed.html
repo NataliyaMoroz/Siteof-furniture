@@ -25,30 +25,30 @@
             </p>
         </form>
     </div>
-    <div class="quality" ng-if="userAlreadyBoughtThisItem">
+    <div class="quality" >
         <form name="rate">
             <h3><b>Estimate product:</b></h3>
             <fieldset  id="question1">
                 <h4><p><b>General product quality:</b></p></h4>
-                <label><input name="question1" ng-model="generalProductQuality" value="POSITIVE" type="radio"  checked> Perfect</label><br/>
-                <label><input name="question1" ng-model="generalProductQuality" value="NEUTRAL" type="radio" > Good</label><br/>
-                <label><input name="question1" ng-model="generalProductQuality" value="NEGATIVE" type="radio" > Bad</label><br/>
+                <label><input name = "generalProductQuality"  ng-model="generalProductQuality" value="POSITIVE" type="radio"  > Perfect</label><br/>
+                <label><input name = "generalProductQuality"  ng-model="generalProductQuality" value="NEUTRAL" type="radio" > Good</label><br/>
+                <label><input name = "generalProductQuality"  ng-model="generalProductQuality" value="NEGATIVE" type="radio" > Bad</label><br/>
             </fieldset>
             <fieldset id="question2">
                 <h4><p><b>Expected and real quality:</b></p></h4>
-                <label><input name="question2" ng-model="expectedAndRealQuality" type="radio" value="POSITIVE" checked> Real quality better</label><br/>
-                <label><input name="question2" ng-model="expectedAndRealQuality" type="radio" value="NEUTRAL"> Quality the same</label><br/>
-                <label><input name="question2" ng-model="expectedAndRealQuality" type="radio" value="NEGATIVE"> Real quality worse</label><br/>
+                <label><input name="expectedAndRealQuality" ng-model="expectedAndRealQuality" type="radio" value="POSITIVE" > Real quality better</label><br/>
+                <label><input name="expectedAndRealQuality" ng-model="expectedAndRealQuality" type="radio" value="NEUTRAL"> Quality the same</label><br/>
+                <label><input name="expectedAndRealQuality" ng-model="expectedAndRealQuality" type="radio" value="NEGATIVE"> Real quality worse</label><br/>
             </fieldset>
             <fieldset id="question3">
                 <h4><p><b>Would you recommend this product?</b></p></h4>
-                <label><input name="question3" ng-model="recommendThisProduct" type="radio" value="POSITIVE" checked> Yes</label><br/>
-                <label><input name="question3" ng-model="recommendThisProduct" type="radio" value="NEGATIVE"> No</label><br/>
+                <label><input name="recommendThisProduct" ng-model="recommendThisProduct" type="radio" value="POSITIVE" > Yes</label><br/>
+                <label><input name="recommendThisProduct" ng-model="recommendThisProduct" type="radio" value="NEGATIVE"> No</label><br/>
             </fieldset>
             <fieldset id="question4">
                 <h4> <p><b>Delivery speed:</b></p></h4>
-                <label><input name="question4" ng-model="deliverySpeed" type="radio" value="POSITIVE" checked> Delivered on time</label><br/>
-                <label><input name="question4" ng-model="deliverySpeed" type="radio" value="NEGATIVE"> Delivered after deadline</label><br/>
+                <label><input name="deliverySpeed" ng-model="deliverySpeed" type="radio" value="POSITIVE" checked> Delivered on time</label><br/>
+                <label><input name="deliverySpeed" ng-model="deliverySpeed" type="radio" value="NEGATIVE"> Delivered after deadline</label><br/>
             </fieldset>
             <p align="center">
                 <a ng-click="submitRates()" class="button">Estimate</a>

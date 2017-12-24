@@ -36,6 +36,7 @@ public class UserService {
 		if (userRepository.findByEmail(user.getEmail()) != null) {
 			throw new UserAlreadyExistException();
 		}
+		user = user.withRole("user");
 		userRepository.save(user.withHashPassword(bCryptPasswordEncoder.encode(user.getHashPassword())));
 		securityService.autologin(user.getEmail(), user.getHashPassword());
 	}
