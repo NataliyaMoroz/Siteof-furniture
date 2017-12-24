@@ -7,7 +7,7 @@
             </ul>
     </div>
 
-    <ul class="products clearfix">
+    <ul class="products clearfix" id="priceFrom priceTo all soft wood without brandIKEA brandSky brandLaretto brandDivan brandSofyno">
         <li ng-repeat="sofa in sofas" class="product-wrapper">
             <a href="/#!/home/sofa/detailed/{{sofa.id}}" class="product">
                 <div class="product-main">
@@ -34,28 +34,32 @@
     </ul>
 
     <div class="filters">
-        <form action="" method="post">
+        <form action="" method="get">
             <fieldset id="price">
                 <p><b>Price</b></p>
-                <p>Minimum: <textarea  ng-model="" rows="1" cols="10" name="minPrice"></textarea></p>
-                <p>Maximum: <textarea  ng-model="" rows="1" cols="10" name="maxPrice"></textarea></p>
+                <label><p>Minimum: <input type="text" ng-model="priceFrom" name="priceFrom"></p></label>
+                <label><p>Maximum: <input type="text" ng-model="priceTo" name="priceTo"></p></label>
             </fieldset>
             <fieldset id="armrest">
                 <p><b>Choose armrest type:</b></p>
                 <select name="armrest">
-                    <option value="all">All types</option>
-                    <option value="soft">Soft armrests</option>
-                    <option value="wood">Wood armrests</option>
-                    <option value="without">Without armrests</option>
+                    <option (click)="filterss()" ng-model="armrest" value="all">All types</option>
+                    <option (click)="filterss()" ng-model="armrest" value="soft">Soft armrests</option>
+                    <option (click)="filterss()" ng-model="armrest" value="wood">Wood armrests</option>
+                    <option (click)="filterss()" ng-model="armrest" value="without">Without armrests</option>
                 </select>
             </fieldset>
             <fieldset id="brand">
                 <p><b>Brand</b></p>
-                <p><input name="brand" type="checkbox" value="IKEA"> IKEA</p>
-                <p><input name="brand" type="checkbox" value="Sky-soft"> Sky-soft</p>
-                <p><input name="brand" type="checkbox" value="Laretto"> Laretto</p>
-                <p><input name="brand" type="checkbox" value="Divan plus"> Divan plus</p>
-                <p><input name="brand" type="checkbox" value="Sofyno"> Sofyno</p>
+                <p><input ng-model="brandIKEA" name="brandIKEA" type="checkbox" value="IKEA"> IKEA</p>
+                <br/>
+                <p><input ng-model="brandSkySoft" name="brandSkySoft" type="checkbox" value="SkySsoft"> SkySoft</p>
+                <br/>
+                <p><input ng-model="brandLaretto" name="brandLaretto" type="checkbox" value="Laretto"> Laretto</p>
+                <br/>
+                <p><input ng-model="brandDivanPlus" name="brandDivanPlus" type="checkbox" value="DivanPlus"> DivanPlus</p>
+                <br/>
+                <p><input ng-model="brandSofyno" name="brandSofyno" type="checkbox" value="Sofyno"> Sofyno</p>
             </fieldset>
         </form>
     </div>

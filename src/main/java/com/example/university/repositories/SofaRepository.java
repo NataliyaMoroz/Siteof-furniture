@@ -13,9 +13,9 @@ public interface SofaRepository extends CrudRepository<Sofa, Integer> {
 
     List<Sofa> findAllByPriceBetween(int price1, int price2);
 
-    List<Sofa> findAllByPriceBetweenAndBrand(int price1, int price2, String brand);
+    List<Sofa> findAllByPriceBetweenAndBrandIn(int price1, int price2, List<String> brand);
 
     List<Sofa> findAllByPriceBetweenAndArmrest(int price1, int price2, String armrest);
 
-    List<Sofa> findAllByPriceBetweenAndBrandAndArmrest(int price1, int price2, String brand, String armrest);
+    List<Sofa> findAllByPriceBetweenAndBrandInAndArmrest(int price1, int price2, List<String> brand, String armrest);
 }

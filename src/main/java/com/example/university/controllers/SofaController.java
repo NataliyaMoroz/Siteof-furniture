@@ -38,7 +38,7 @@ public class SofaController {
     @GetMapping(value = "/all")
     public Iterable<Sofa> getByBrandAndArmrest(@RequestParam(value = "priceFrom", required = false) Integer price1,
                                                @RequestParam(value = "priceTo", required = false) Integer price2,
-                                               @RequestParam(value = "brand", required = false) String brand,
+                                               @RequestParam(value = "brand", required = false) List<String> brand,
                                            @RequestParam(value = "armrest", required = false) String armrest) {
         if (price1 == null && price2 != null) {
             return sofaService.findAllByPriceLessThanEqualBrandAndArmrest(price2, brand, armrest);
