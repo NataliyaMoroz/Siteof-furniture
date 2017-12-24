@@ -17,9 +17,10 @@ app.controller('sofaController', ["$http", "$scope", "$window",
         });
 
         $scope.siteFilter = function () {
+
             console.log($scope.priceFrom);
             console.log($scope.priceTo);
-            console.log($scope.armrest);
+            console.log($scope.armrestOptions);
             console.log($scope.brandIKEA);
             console.log($scope.brandSkySoft);
             console.log($scope.brandLaretto);
@@ -78,8 +79,8 @@ app.controller('sofaController', ["$http", "$scope", "$window",
                     brandPath = "brand=" + $scope.brandSofyno;
                 }
             }
-            if($scope.armrest != undefined || $scope.armrest != all) {
-                armrestPath = "priceFrom=" + $scope.armrest;
+            if($scope.armrestOptions != undefined || $scope.armrestOptions != all) {
+                armrestPath = "armrest=" + $scope.armrestOptions;
             }
 
             if (priceFromPath != "") {
