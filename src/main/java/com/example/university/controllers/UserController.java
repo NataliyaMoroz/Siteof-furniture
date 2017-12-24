@@ -1,6 +1,9 @@
 package com.example.university.controllers;
 
 import com.example.university.dao.Booking;
+import com.example.university.redis.repository.RedisRepository;
+import com.example.university.redis.user.UserSettings;
+import com.example.university.redis.user.UserSettingsEvelope;
 import com.example.university.services.UserService;
 import com.example.university.utils.UserAlreadyExistException;
 import com.example.university.dao.User;
@@ -15,6 +18,9 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private RedisRepository redisRepository;
 
 	@PostMapping(value = "/registration")
 	public ResponseEntity registerNewUser(@RequestBody User user) throws UserAlreadyExistException {
@@ -42,5 +48,16 @@ public class UserController {
 	@GetMapping(value="/review/{category}/{furnitureId}")
 	public ResponseEntity userHasAccessToReviewThisItem(@PathVariable String category, @PathVariable Integer furnitureId) {
 		return ResponseEntity.ok(userService.userHasAccessToReviewThisItem(category, furnitureId));
+	}
+
+	@GetMapping(value = "/userSettings")
+	public ResponseEntity getUserSettings(){
+		return ResponseEntity.ok(redisRepository.findUserSettings(userService.getCurrentUser().getId()));
+	}
+
+	@PostMapping(value = "/userSettings")
+	public ResponseEntity saveUserSettings(@RequestBody UserSettings userSettings) {
+		redisRepository.add(new UserSettingsEvelope(userService.getCurrentUser().getId(), userSettings));
+		return ResponseEntity.ok().build();
 	}
 }
