@@ -10,11 +10,29 @@ app.controller('sofaController', ["$http", "$scope", "$window",
             $scope.userAuthentificated = true;
             $http.get("be/user/userSettings").then(function (response) {
                 if(response!==null) {
-                    if (response.data.currentPage !== "/home/sofa") {
-                        $window.location.href = response.data.currentPage;
-                    }
+                    console.log(response.data.brands);
+                    var brands = response.data.brands;
                     $scope.armrestOptions = response.data.armrest;
-                    $scope.siteFilter()
+                    $scope.priceFrom = response.data.priceFrom;
+                    $scope.priceTo = response.data.priceTo;
+                    for (var i = 0; i < brands.length; i++) {
+                        if(brands[i] == "IKEA") {
+                            $scope.brandIKEA = true;
+                        }
+                        if(brands[i] == "SkySoft") {
+                            $scope.brandSkySoft = true;
+                        }
+                        if(brands[i] == "Laretto") {
+                            $scope.brandLaretto = true;
+                        }
+                        if(brands[i] == "DivanPlus") {
+                            $scope.brandDivanPlus = true;
+                        }
+                        if(brands[i] == "Sofyno") {
+                            $scope.brandSofyno = true;
+                        }
+                    }
+                    $scope.siteFilter();
                 }
 
             });
@@ -125,33 +143,34 @@ app.controller('sofaController', ["$http", "$scope", "$window",
                     fullPath = armrestPath;
                 }
             }
-            console.log(priceFromPath);
-            console.log(priceToPath);
-            console.log(armrestPath);
-            console.log(brandPath);
-            console.log(fullPath);
             $http.get("be/sofa/all?" + fullPath)
                 .then(function (response) {
                     $scope.sofas =  response.data;
                 });
         };
 
-
-        $scope.loadUserSettings = function () {
-            $http.get("be/user/currentUser").then(function (response) {
-                $scope.userAuthentificated = true;
-                $http.get("be/user/userSettings").then(function (response) {
-                    if(response!==null)
-                        $scope.armrestOptions = response.data.armrest;
-                })
-            }).catch(function (response) {});
-        };
-
         $scope.saveUserSettings = function () {
+            var brands = [];
+            if($scope.brandIKEA == true)
+                brands.push("IKEA");
+            if($scope.brandSkySoft == true)
+                brands.push("SkySoft");
+            if($scope.brandLaretto == true)
+                brands.push("Laretto");
+            if($scope.brandDivanPlus == true)
+                brands.push("DivanPlus");
+            if($scope.brandSofyno == true)
+                brands.push("Sofyno");
+            console.log(brands);
             $http.get("be/user/currentUser").then(function (response) {
                 $scope.userAuthentificated = true;
                 $http.post("be/user/userSettings",
-                    {armrest:$scope.armrestOptions, furnitureCategory:"sofa", currentPage:"/home/sofa"})
+                    {armrest:$scope.armrestOptions,
+                        priceFrom:$scope.priceFrom,
+                        priceTo:$scope.priceTo,
+                        furnitureCategory:"sofa",
+                        brands:brands,
+                        currentPage:"/home/sofa"})
 
             }).catch(function (response) {});
         }

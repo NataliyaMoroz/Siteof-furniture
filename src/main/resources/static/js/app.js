@@ -41,6 +41,14 @@ app.config(function($routeProvider){
     $http.get("be/user/currentUser").then(function (response) {
         $scope.user = response.data;
         $scope.showUser = true;
+        $scope.userAuthentificated = true;
+        $http.get("be/user/userSettings").then(function (response) {
+            if (response !== null) {
+                $window.location.href = "/#!" + response.data.currentPage;
+            }
+            else
+                $window.location.href = '/';
+        })
     }).catch(function (response) {});
 
     $scope.logOut= function () {

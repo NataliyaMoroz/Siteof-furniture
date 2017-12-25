@@ -6,6 +6,14 @@ app.controller('sofaDetailedController', ["$http", "$scope", "$window", "$locati
             $scope.sofa =  response.data;
         });
 
+        $http.get("be/user/currentUser").then(function (response) {
+            $scope.userAuthentificated = true;
+            var path = "/home/sofa/detailed/" + $scope.sofaId
+            $http.post("be/user/userSettings",
+                {currentPage:path})
+
+        }).catch(function (response) {});
+
         $scope.userAuthentificated = false;
         $scope.userAlreadyBoughtThisItem = false;
 

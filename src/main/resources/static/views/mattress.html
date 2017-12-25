@@ -1,9 +1,9 @@
 <div class="container">
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Mattress</a></li>
-                <li><a href="#">Bed</a></li>
-                <li><a href="#">Sofa</a></li>
+                <li class="active"><a href="/#!/home/mattress">Mattress</a></li>
+                <li><a href="/#!/home/bed">Bed</a></li>
+                <li><a href="/#!/home/sofa">Sofa</a></li>
             </ul>
     </div>
     <div class="filters">
@@ -15,7 +15,10 @@
             </fieldset>
             <fieldset id="weight">
                 <p><b>Bed load</b></p>
-                <p><input type="range" min="20" max="500" id="size" oninput="" value="75"></p>
+                <form onsubmit="return false" oninput="o.value=load.valueOf()">
+                    <output name="o" for="load">75</output>
+                    <input type="range" name="load" min="20" max="500" id="load" value="75" >
+                </form>
             </fieldset>
             <fieldset id="type">
                 <p><b>Type</b></p>
